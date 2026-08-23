@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuvu AI — توليد الفيديو</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>🎬 Kuvu AI</h1>
+    <p class="subtitle">توليد فيديو بالذكاء الاصطناعي</p>
+
+    <section class="card">
+      <label for="apiKey">مفتاح API</label>
+      <input id="apiKey" type="password" placeholder="مفتاح الحماية" />
+    </section>
+
+    <section class="card">
+      <label for="mode">الوضع</label>
+      <select id="mode">
+        <option value="text_to_video">🎬 توليد فيديو من نص</option>
+        <option value="image_to_video">📸 تحويل صورة إلى فيديو</option>
+        <option value="video_edit">✂️ تعديل فيديو</option>
+      </select>
+
+      <label for="prompt">الوصف النصي</label>
+      <textarea id="prompt" rows="3" placeholder="اكتب وصف الفيديو هنا..."></textarea>
+
+      <label for="mediaFile">رفع وسائط (صورة/فيديو)</label>
+      <input id="mediaFile" type="file" accept="image/*,video/*" />
+      <button id="uploadBtn" type="button" class="secondary">رفع الملف</button>
+      <ul id="mediaList" class="media-list"></ul>
+
+      <div class="settings">
+        <div>
+          <label for="resolution">الجودة</label>
+          <select id="resolution">
+            <option>720p</option>
+            <option selected>1080p</option>
+            <option value="4k">4k</option>
+          </select>
+        </div>
+        <div>
+          <label for="aspect">الأبعاد</label>
+          <select id="aspect">
+            <option selected>16:9</option>
+            <option>9:16</option>
+          </select>
+        </div>
+        <div>
+          <label for="duration">المدة (ثانية)</label>
+          <select id="duration">
+            <option>4</option>
+            <option selected>8</option>
+            <option>12</option>
+            <option>15</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="generateBtn" type="button">🎬 توليد</button>
+    </section>
+
+    <section id="statusCard" class="card hidden">
+      <div class="spinner" id="spinner"></div>
+      <p id="statusText">...</p>
+      <video id="resultVideo" controls class="hidden"></video>
+      <a id="downloadLink" class="hidden" download>تحميل الفيديو</a>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
